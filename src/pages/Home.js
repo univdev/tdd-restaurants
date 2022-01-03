@@ -67,7 +67,6 @@ const Home = () => {
 };
 
 const Restaurant = (props) => {
-  console.log(props.name);
   return (
     <View>
       <Text>{props.name}</Text>
