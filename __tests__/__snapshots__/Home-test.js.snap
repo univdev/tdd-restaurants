@@ -1,9 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home Snapshot 1`] = `
-<View>
+exports[`Home Home 화면이 정상적으로 렌더링 되는가? 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+>
   <Text>
-    Hello world!
+    Your Favorite Restaurants!
   </Text>
-</View>
+  <View />
+  <TextInput
+    onChangeText={[Function]}
+    testID="restaurantNameField"
+    value=""
+  />
+  <View
+    accessibilityRole="button"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+    testID="restaurantAddButton"
+  >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        추가
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
 `;
