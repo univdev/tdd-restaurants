@@ -30,7 +30,9 @@ describe('Home', () => {
     const message = '레스토랑 이름을 입력해주세요!';
     const button = screen.getByTestId('restaurantAddButton');
     fireEvent(button, 'press');
+    const json = screen.toJSON();
     expect(Alert.alert).toHaveBeenCalledWith(title, message);
+    expect(json).toMatchSnapshot();
   });
   it('레스토랑을 추가할 수 있는가?', () => {
     const names = [
