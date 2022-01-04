@@ -1,6 +1,8 @@
 import produce from 'immer';
 import React, { useReducer } from 'react';
 import { Text, View, TextInput, Button, Alert, SafeAreaView, } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from '../../store/restaurants';
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -9,26 +11,22 @@ const reducer = (state, action) => {
         draft.name = action.payload;
         return draft;
       });
-    case 'ADD_ITEM':
-      return produce(state, (draft) => {
-        draft.items.push(action.payload);
-        return draft;
-      });
     default:
       return state;
   }
 };
 
 const Home = () => {
+  const reduxDispatch = useDispatch();
+  const items = useSelector((state) => state.restaurants.items);
   const [state, dispatch] = useReducer(reducer, {
     name: '',
-    items: [],
   });
   const handleAddRestaurant = () => {
     try {
       if (!state.name) throw new Error('레스토랑 이름을 입력해주세요!');
       const { name } = state;
-      dispatch({ type: 'ADD_ITEM', payload: name });
+      reduxDispatch(addItem(name));
       dispatch({ type: 'SET_NAME', payload: '' });
     } catch (e) {
       Alert.alert('레스토랑 추가 실패', e.message);
@@ -42,7 +40,7 @@ const Home = () => {
       <Text>Your Favorite Restaurants!</Text>
       <View>
         {
-          state.items.map((item, index) => {
+          items.map((item, index) => {
             return (
               <Restaurant
                 key={index}
